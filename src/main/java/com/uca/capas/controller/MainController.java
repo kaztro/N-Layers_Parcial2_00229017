@@ -57,6 +57,7 @@ public class MainController {
 	public ModelAndView ingresarLib() {
 		ModelAndView mav = new ModelAndView();
 		Libro libro = new Libro();
+		libro.setF_ingreso(new java.util.Date());
 		List<Categoria> categorias = null;
 		
 		try { categorias = categoriaService.findAll(); }
@@ -79,7 +80,7 @@ public class MainController {
 			catch(Exception e) { e.printStackTrace(); }
 			
 			mav.addObject("categorias", categorias);
-			mav.setViewName("filterLib");
+			mav.setViewName("ingresarLib");
 		} else {
 			try { libroService.insert(libro); }
 			catch(Exception e) { e.printStackTrace(); }
@@ -93,8 +94,8 @@ public class MainController {
 	@RequestMapping("/filterCat")
 	public ModelAndView filterCat(@Valid @ModelAttribute Categoria categoria, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
-		
-		if(result.hasErrors()) { mav.setViewName("filterCat"); } 
+		mav.addObject("categoria", categoria);
+		if(result.hasErrors()) { mav.setViewName("ingresarCat"); } 
 		else {
 			try { categoriaService.insert(categoria); }
 			catch(Exception e) { e.printStackTrace(); }
