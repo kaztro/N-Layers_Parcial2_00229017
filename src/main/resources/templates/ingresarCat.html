@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de categoria</title>
+</head>
+<body>
+    <form th:action="@{/filterCat}" th:object="${categoria}" method="POST">
+        
+        <label for="s_categoria">Nombre Categoria:</label>
+        <input type="text" name="s_categoria" th:field="*{s_categoria}">
+        <span th:errors="*{s_categoria}" style="color: red;"></span>
+        <br>
+
+        <input type="submit" value="Guardar categoria">
+    </form>
+    <br>
+    <form th:action="@{/listado}" method="POST">
+        <input type="submit" value="Revisar lista de contribuyentes">
+    </form>
+    
+</body>
+</html>
