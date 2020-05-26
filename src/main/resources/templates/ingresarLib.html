@@ -32,10 +32,8 @@
         <input type="checkbox" name="b_estado" th:field="*{b_estado}">
         <span th:errors="*{b_estado}" style="color: red;"></span>
         <br>
-        
-        
 
-        <input type="submit" value="Almacenar">
+        <input type="submit" value="Guardar">
     </form>
     <br>
     <form th:action="@{/listado}" method="POST">
