@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -46,9 +44,9 @@ public class Libro {
 	@Transient
 	private Integer c_categoria;
 	
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "f_ingreso")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
 	private Date f_ingreso;
 	
 	@NotNull
@@ -61,7 +59,7 @@ public class Libro {
 	private String s_isbn;
 	
 	public String getF_ingreso() {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 		return formatter.format(f_ingreso);
 	}
 	
