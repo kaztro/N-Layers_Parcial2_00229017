@@ -25,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(schema = "public", name = "CAT_LIBRO")
 public class Libro {
 	@Id
-	@Column(name="c_libro")
+	@Column(name = "c_libro")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer c_libro;
 	
@@ -129,6 +129,9 @@ public class Libro {
 		this.s_isbn = s_isbn;
 	}
 	
-	
+	public String getEstadoDelegate() {
+		if(this.b_estado == null) return "";
+		else { return b_estado == true ? "Activo":"Inactivo"; }
+	}
 	
 }
