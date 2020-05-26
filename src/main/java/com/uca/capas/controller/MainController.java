@@ -82,11 +82,13 @@ public class MainController {
 			mav.addObject("categorias", categorias);
 			mav.setViewName("ingresarLib");
 		} else {
-			try { libroService.insert(libro); }
+			try { 
+				libroService.insert(libro); 
+				libro = new Libro();
+				mav.addObject("exitoL", "Libro guardado con exito");
+				mav.setViewName("index");
+			}
 			catch(Exception e) { e.printStackTrace(); }
-			
-			libro = new Libro();
-			mav.setViewName("filterLib");
 		}
 		return mav;
 	}
@@ -97,11 +99,13 @@ public class MainController {
 		mav.addObject("categoria", categoria);
 		if(result.hasErrors()) { mav.setViewName("ingresarCat"); } 
 		else {
-			try { categoriaService.insert(categoria); }
+			try { 
+				categoriaService.insert(categoria); 
+				categoria = new Categoria();
+				mav.addObject("exitoC", "Categoria guardado con exito");
+				mav.setViewName("index");
+			}
 			catch(Exception e) { e.printStackTrace(); }
-			
-			categoria = new Categoria();
-			mav.setViewName("filterCat");
 		}
 		return mav;
 	}
